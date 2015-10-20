@@ -1,0 +1,41 @@
+<div class="calendar">
+
+  <div ng-repeat="month in calendar.months" class="month" ng-class="{'hide-small': $first || $last }">
+
+    <div class="month-caption">
+      <div ng-if="!$last" ng-class="{ 'hide-large': !$first }" class="navigation-back" ng-click="moveView(-1)">&#8592;</div>
+      <div ng-if="!$first" ng-class="{ 'hide-large': !$last }" class="navigation-next" ng-click="moveView(1)">&#8594;</div>
+      <h3>{{ month.date.format('MMMM YY')  }}</h3>
+    </div>
+    <div class="clear"></div>
+    <div ng-repeat="week in month.weeks" class="week" >
+
+      <div ng-if="$first" class="month-header">
+        <div ng-repeat="day in week.days" ng-class="{ 'weekend-day': day.isWeekend}">
+          {{ day.date.format('dd') }}
+        </div>
+      </div>
+
+      <div ng-class="{ 'last-week': $last }" >
+        <div ng-click="selectDay(day)" ng-repeat="day in week.days" class="day" ng-class="{
+              'weekend-day': day.isWeekend,
+              'first-day': $first,
+              'last-day': $last,
+              'offset-day': day.isOffset,
+              'booked-day': day.isBooked() || day.isDeparture() && day.isArrival(),
+              'arrival-day': day.isArrival() && !day.isDeparture(),
+              'departure-day': day.isDeparture() && !day.isArrival(),
+              'selected-day': day == selection.start || day == selection.end || isInRange(day),
+              'selected-booking': selection.booking && day.booking == selection.booking }" >
+          <span>{{ day.date.format('DD') }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="clear"></div>
+
+</div>
+

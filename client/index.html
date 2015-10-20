@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+<style>
+  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+  }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.1/locales.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-touch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.3.5/tabletop.min.js"></script>
+
+<div ng-app="booking" ng-controller="MainController as main" class="ng-cloak">
+  <div ng-if="!main.validation.success">
+    <h1>An- und Abreise</h1>
+    <div class="form-wrapper">
+      <div class="form-inner-wrapper">
+        <div class="field-list clear">
+          <div class="form-item field text required" ng-class="{ 'error': main.validation.invalidStart }">
+            <label class="title">Anreise</label>
+
+            <div ng-if="main.selection.start" class="selected-date">{{ main.selection.start.date.format("dddd, Do MMMM
+              YYYY") }}
+            </div>
+            <div ng-if="!main.selection.start" class="empty-date">Bitte wählen Sie in der Kalenderansicht den Tag der
+              <i>Anreise</i> aus.
+            </div>
+          </div>
+
+          <div ng-if="main.selection.start" class="form-item field text required" ng-class="{ 'error': main.validation.invalidEnd }">
+            <label class="title">Abreise</label>
+
+            <div ng-if="main.selection.end" class="selected-date">{{ main.selection.end.date.format("dddd, Do MMMM
+              YYYY") }}
+            </div>
+            <div ng-if="!main.selection.end" class="empty-date">Bitte wählen Sie in der Kalenderansicht den Tag der <i>Abreise</i>
+              aus.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <booking-calendar
+            data-selection="main.selection"
+            data-on-select="main.selectDay(day)">
+    </booking-calendar>
+
+    <div class="booking-info">
+      <div ng-if="main.selection.booking">
+        <h4 class="booking-owner">{{ main.selection.booking.vorname }} {{ main.selection.booking.name }}</h4>
+
+        <div class="booking-dates">{{ main.selection.booking.start.format("dddd, Do MMMM YYYY") }} &ndash; {{
+          main.selection.booking.end.format("dddd, Do MMMM YYYY") }}
+        </div>
+      </div>
+
+      <div ng-if="!main.selection.booking" class="empty-selection">Wählen sie eine Buchung aus, um mehr Informationen zu
+        bekommen.
+      </div>
+    </div>
+
+    <squarespace-connector data-validation="main.validation" start="main.selection.start.date"
+                           end="main.selection.end.date"></squarespace-connector>
+
+    <h1>Details</h1>
+  </div>
+  <link rel="stylesheet" type="text/css" href="<%= styles %>" inline>
+  <script src="<%= scripts %>" inline></script>
+
+</div>
+
+</body>
+</html>
+

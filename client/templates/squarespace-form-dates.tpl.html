@@ -1,0 +1,11 @@
+<div ng-if="!start">Bitte wählen Sie in der Kalenderansicht oben das Anreise- und Abreisedatum aus.</div>
+<!--<div ng-if="start">-->
+  <!--{{ start.format("dddd, Do MMMM YYYY") }} <span ng-if="end">- {{ end.format("dddd, Do MMMM YYYY") }}</span>-->
+<!--</div>-->
+
+
+<h1>Anreise</h1>
+<p>{{ start.format("dddd, Do MMMM YYYY") }}</p>
+
+<h1>Abreise</h1>
+<p>{{ end.format("dddd, Do MMMM YYYY") }}</p>

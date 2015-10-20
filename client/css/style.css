@@ -1,0 +1,173 @@
+.calendar {
+    width: 100%
+}
+
+.hide-small {
+    display: none !important;
+}
+
+.hide-large {
+    display: block !important;
+}
+
+.month {
+    display: inline-block;
+    float: left;
+    width: 300px;
+    min-height: 350px;
+    position: relative;
+    left: 50%;
+    margin-left: -150px;
+}
+
+
+@media (min-width: 945px) {
+
+    .hide-small {
+        display: block !important;
+    }
+
+    .hide-large {
+        display: none !important;
+    }
+
+    .month {
+        display: inline-block;
+        float: left;
+        width: 300px;
+        min-height: 350px;
+        position: inherit;
+        left: inherit;
+        margin-left: inherit;
+    }
+}
+
+.clear {
+    clear: both;
+}
+
+.month-caption > h3 {
+    text-align: center;
+    margin-top: 0px;
+}
+
+.navigation-next, .navigation-back {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.navigation-next {
+    float: right;
+    right: 20px;
+}
+.navigation-back {
+    float: left;
+    left: 10px;
+}
+
+.month-header > div, .day {
+    display: inline-block;
+    padding: 5px; min-width: 30px;
+    text-align: center;
+}
+
+.day {
+    border-right: solid 1px #ddd;
+    border-top: solid 1px #ddd;
+    vertical-align: middle;
+    height: 30px;
+    cursor: pointer;
+}
+
+.day > span {
+    line-height: 30px;
+}
+
+.first-day {
+    border-left: solid 1px #ddd;
+}
+
+.last-week .day {
+    border-bottom: solid 1px #ddd;
+}
+
+.day.weekend-day {
+    opacity: 1.0;
+    background-color: #f7f7f7;
+}
+
+.day:hover, .departure-day:hover {
+    background-color: #6d9bb6 !important;
+    color: white;
+}
+
+.booked-day, .arrival-day, .departure-day {
+    color: white;
+    opacity: 0.8;
+}
+
+.booked-day, .arrival-day, .departure-day  {
+    background-color: #ff6d72 !important;
+
+}.arrival-day, .departure-day  {
+    background-color: #ffcdbe !important;
+}
+
+.booked-day:hover, .arrival-day:hover  {
+    background-color: #934044 !important;
+}
+
+.selected-booking {
+    background-color: #934044 !important;
+}
+
+.selected-day {
+    color: white;
+    background-color: #6d9bb6 !important;
+    opacity: 0.8;
+}
+
+.offset-day, .offset-day:hover {
+    cursor: auto;
+    background-color: inherit !important;
+}
+
+.offset-day > span {
+    visibility: hidden;
+}
+
+.booking-info {
+    padding: 5px;
+    font-size: 0.9em;
+    min-height: 55px;
+}
+
+.booking-info h4 {
+    margin-bottom: 4px;
+}
+
+.booking-info .empty-selection {
+    font-size: 0.8em;
+}
+
+.selected-date {
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+.empty-date {
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+.date-validation {
+    display: none;
+}
